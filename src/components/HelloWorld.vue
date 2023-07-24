@@ -1,12 +1,22 @@
 <template>
   <div class="hello">
-    <h1>{{ message }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the jgcjgcjhckhjv,jvh
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
+    <h1>sign in</h1>
+    <fieldset>
+              <label for="email">Email<br></label>
+              <input type="email" id="email" v-model="form.email">
+              <span v-if="errors.email" class="error">{{ errors.email }}</span>
+          </fieldset>
+          <fieldset>
+              <label for="password">Password<br></label>
+              <input type="password" id="password" v-model="form.password">
+              <span v-if="errors.password" class="error">{{ errors.password }}</span>
+          </fieldset>
+
+    <button type="submit" @click="Login">Login{{ getForm(form) }}</button>
+    <router-link to="/register">
+      <button >register</button> 
+    </router-link>
+     
   </div>
 </template>
 
@@ -18,15 +28,65 @@ export default {
   },
   data() {
     return {
-      message: 'This is mustache syntax',
-      arr1: [],
-      obj: {}
+      form:{
+        email: '',
+        password: ''
+      },
+       errors: {},
+
     }
   },
+
   computed: {
 
   },
   methods: {
+    getForm(obj) {
+      console.log(obj);
+    },
+    validateForm() {
+
+      this.errors = {};
+
+
+      // Email validation
+      if (!this.form.email) {
+        this.errors.email = 'Email is required.';
+      } else if (!this.isValidEmail(this.form.email)) {
+        this.errors.email = 'Invalid email format.';
+      }
+
+      // Password validation
+      if (!this.form.password) {
+        this.errors.password = 'Password is required.';
+      } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(this.form.password)) {
+        this.errors.password = 'Password must include a special character.';
+      } else if (!/^[A-Z]/.test(this.form.password)) {
+        this.errors.password = 'Password must start with a capital letter.';
+      } else if (this.form.password.length !== 8) {
+        this.errors.password = 'Password must be 8 digits long.';
+      }
+
+
+
+      return Object.keys(this.errors).length === 0;
+    },
+    isValidEmail(email) {
+      // A basic email validation using regex (you can use a more comprehensive one)
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailPattern.test(email);
+    },
+    Login() {
+      if (this.validateForm()) {
+        // Form is valid, perform form submission or API call here.
+        console.log(' valid credentials. Logging...');
+      } else {
+        // Form is invalid. Display errors or prevent form submission.
+        console.log(' invalid credentials. Please enter correct credentials.');
+      }
+    },
+  
+
 
   },
   created() {
@@ -38,14 +98,18 @@ export default {
   updated() {
     
   },
-  destroyed() {
+  unmounted() {
     
   },
+
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/* .hello{
+  display: block;
+} */
 h3 {
   margin: 40px 0 0;
 }

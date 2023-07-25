@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div  class="hello">
     <h1>sign in</h1>
     <fieldset>
               <label for="email">Email<br></label>
@@ -12,10 +12,13 @@
               <span v-if="errors.password" class="error">{{ errors.password }}</span>
           </fieldset>
 
-    <button type="submit" @click="Login">Login{{ getForm(form) }}</button>
+    <router-link to="/todo">
+        <button type="submit" @click="Login">Login{{ getForm(form) }}</button>
+    </router-link>
     <router-link to="/register">
       <button >register</button> 
     </router-link>
+
      
   </div>
 </template>
@@ -49,14 +52,14 @@ export default {
       this.errors = {};
 
 
-      // Email validation
+      
       if (!this.form.email) {
         this.errors.email = 'Email is required.';
       } else if (!this.isValidEmail(this.form.email)) {
         this.errors.email = 'Invalid email format.';
       }
 
-      // Password validation
+      
       if (!this.form.password) {
         this.errors.password = 'Password is required.';
       } else if (!/[!@#$%^&*(),.?":{}|<>]/.test(this.form.password)) {
@@ -72,16 +75,16 @@ export default {
       return Object.keys(this.errors).length === 0;
     },
     isValidEmail(email) {
-      // A basic email validation using regex (you can use a more comprehensive one)
+     
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailPattern.test(email);
     },
     Login() {
       if (this.validateForm()) {
-        // Form is valid, perform form submission or API call here.
+        
         console.log(' valid credentials. Logging...');
       } else {
-        // Form is invalid. Display errors or prevent form submission.
+        
         console.log(' invalid credentials. Please enter correct credentials.');
       }
     },
@@ -107,6 +110,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.conditional-class{
+  background-color: #42b983;}
 /* .hello{
   display: block;
 } */

@@ -5,6 +5,7 @@
             {{ todo }}
         </li>
     </ul>
+    <button @click="passTOParent">Emit</button>
 </template>
 
 <script>
@@ -12,7 +13,19 @@ export default {
     name:'ShowTodo',
     props: {
         todos:[]
-    }  
+    },
+    data() {
+        return {
+            name: "zain",
+            
+        }
+    },
+    methods: {
+        passTOParent() {
+            this.$emit('name', this.name)
+        }
+    },
+    
     }
 
 </script>

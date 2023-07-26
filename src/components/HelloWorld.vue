@@ -11,10 +11,10 @@
               <input type="password" id="password" v-model="form.password">
               <span v-if="errors.password" class="error">{{ errors.password }}</span>
           </fieldset>
-
-    <router-link to="/todo">
+          <span v-if="errors.credentials" class="error">{{ errors.credentials }}</span>
+    
         <button type="submit" @click="Login">Login{{ getForm(form) }}</button>
-    </router-link>
+    
     <router-link to="/register">
       <button >register</button> 
     </router-link>
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import router from '@/router';
 export default {
   name: 'HelloWorld',
   props: {
@@ -36,6 +37,7 @@ export default {
         password: ''
       },
        errors: {},
+      continue: false
 
     }
   },
@@ -80,11 +82,15 @@ export default {
       return emailPattern.test(email);
     },
     Login() {
-      if (this.validateForm()) {
-        
-        console.log(' valid credentials. Logging...');
-      } else {
-        
+       
+      if (this.form.email == localStorage.getItem('email') && this.form.password == localStorage.getItem('password')) {
+          console.log(' valid credentials. Logging...');
+          router.push('/todo');
+
+        }
+    
+      else {
+        this.errors.credentials = ' invalid credentials.Please enter correct credentials.';
         console.log(' invalid credentials. Please enter correct credentials.');
       }
     },

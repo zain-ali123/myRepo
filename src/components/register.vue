@@ -89,7 +89,9 @@ export default {
         },
         submitForm() {
             if (this.validateForm()) {
-                
+                console.log(this.form.password);
+                localStorage.setItem('email', this.form.email),
+                localStorage.setItem('password',this.form.password)
                 console.log('Form is valid. Submitting...');
             } else {
                 

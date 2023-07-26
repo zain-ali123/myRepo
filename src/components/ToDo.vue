@@ -12,7 +12,7 @@
         
         <button type="submit" @click="displayList">ShowList</button>
 
-        <ShowTodo :todos="todo" v-if="showList"/>
+        <ShowTodo @name="logName(name)" :todos="todo" v-if="showList"/>
     </div>
 </template>
 <script>
@@ -31,14 +31,18 @@ export default {
     },
     methods: {
         getTodo() {
+            
             this.todo.push(this.string);
             this.$refs.form.reset();
             console.log(this.todo);
 
-            
+                 
         },
         displayList() {
             this.showList = true;
+        },
+        logName(name) {
+            console.log(name);
         }
 
     }

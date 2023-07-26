@@ -23,13 +23,7 @@ const routes = [
     path: '/todo',
     name: 'todo',
     component: ToDoView,
-    // children: [
-    //   {
-    //   path: '/root',
-    //   name: 'root',
-    //   component: HomeView
-    // },
-    // ]
+
   }
 ]
 

@@ -2,7 +2,7 @@
     <div class="todo">
         <h1>Todo</h1>
     </div>
-    <todo/>
+    <todo />
 </template>
 <script>
 import todo from '@/components/ToDo.vue'

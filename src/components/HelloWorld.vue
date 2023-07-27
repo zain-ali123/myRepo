@@ -18,6 +18,7 @@
     <router-link to="/register">
       <button >register</button> 
     </router-link>
+    
 
      
   </div>
@@ -37,7 +38,8 @@ export default {
         password: ''
       },
        errors: {},
-      continue: false
+      continue: false,
+      count:0
 
     }
   },
@@ -82,7 +84,8 @@ export default {
       return emailPattern.test(email);
     },
     Login() {
-       
+
+      
       if (this.form.email == localStorage.getItem('email') && this.form.password == localStorage.getItem('password')) {
           console.log(' valid credentials. Logging...');
           router.push('/todo');
@@ -90,25 +93,36 @@ export default {
         }
     
       else {
+        this.count = this.count + 1;
         this.errors.credentials = ' invalid credentials.Please enter correct credentials.';
         console.log(' invalid credentials. Please enter correct credentials.');
       }
     },
+
+    
   
 
 
   },
-  created() {
+  watch: {
+    count(val) {
+      if (val == 3) {
+        alert("you have entered wrong credentials 3 time")
+      }
+    }
 
+  },
+  created() {
+    console.log("im in created hoook")
   },
   mounted(){
-
+    console.log("im in mounted hoook")
   },
   updated() {
-    
+    console.log("im in updated hoook")
   },
   unmounted() {
-    
+    console.log("im in unmounted hoook")
   },
 
 }

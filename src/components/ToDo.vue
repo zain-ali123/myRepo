@@ -1,18 +1,21 @@
 <template>
     <div class="ToDo">
-        <form ref="form">
-                <fieldset>
-                <label for="" ><br></label>
-                <input type="text" v-model="string">
-
-            </fieldset>
-        </form>
         
-        <button type="submit" @click="getTodo ">Submit</button>
+            <fieldset>
+                <label for="" ><br></label>
+                <form ref="form">
+                    <input type="text" v-model="string">
+                </form>
+                <button type="submit" @click="getTodo">Submit</button>
+            </fieldset>
+       
+        
+        
         
         <button type="submit" @click="displayList">ShowList</button>
+        <h2 >{{ emitRecieved }}</h2>
 
-        <ShowTodo @name="logName(name)" :todos="todo" v-if="showList"/>
+        <ShowTodo @name="logName" :todos="todo" v-if="showList"/>
     </div>
 </template>
 <script>
@@ -25,7 +28,8 @@ export default {
             
             todo: [],
             string: '',
-            showList:false,
+            showList: false,
+            emitRecieved:''
             
        }
     },
@@ -41,8 +45,8 @@ export default {
         displayList() {
             this.showList = true;
         },
-        logName(name) {
-            console.log(name);
+        logName(x) {
+            this.emitRecieved = x;
         }
 
     }

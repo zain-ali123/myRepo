@@ -9,12 +9,14 @@
   "dependencies": {
     "vue": "^3.2.13",
     "vue-router": "^4.2.4",
+    "vuetify": "^3.3.9",
     "vuex": "^4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-plugin-vuex": "~5.0.0",
-    "@vue/cli-service": "~5.0.0"
+    "@vue/cli-service": "~5.0.0",
+    "vue-cli-plugin-vuetify": "~2.5.8"
   },
   "browserslist": [
     "> 1%",

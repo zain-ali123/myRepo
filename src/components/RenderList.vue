@@ -22,8 +22,9 @@ export default {
     },
     methods: {
         passTOParent() {
+            console.log(this.name)
             this.$emit('name', this.name)
-        }
+        },
     },
     
     }

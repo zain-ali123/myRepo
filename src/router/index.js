@@ -5,6 +5,7 @@ import RegisterView from '../views/RegisterView.vue'
 import ToDoView from '../views/ToDoView.vue'
 import MyView from '../views/myListView.vue'
 import addtodo from '../components/addToTodo.vue'
+import temp from '../components/temp.vue'
   
 const routes = [
   {
@@ -34,11 +35,16 @@ const routes = [
     component: MyView,
     children: [
       {
-    path: '/addTodo',
-    name: 'addTodo',
+    path: 'addTodo',
     component: addtodo,
   },
     ]
+  },
+    {
+    path: '/temp',
+    name: 'temp',
+    component: temp,
+
   }
 ]
 

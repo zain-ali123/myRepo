@@ -16,10 +16,10 @@
         <button type="submit" @click="Login">Login{{ getForm(form) }}</button>
     
     <router-link to="/register">
-      <button >register</button> 
+      <button style="margin-left: 10px;">register</button> 
     </router-link>
     
-
+ 
      
   </div>
 </template>
@@ -37,7 +37,7 @@ export default {
         email: '',
         password: ''
       },
-       errors: {},
+      errors: {},
       continue: false,
       count:0
 

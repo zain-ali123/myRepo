@@ -1,19 +1,18 @@
 <template>
 
-  <router-view/>
+  
     <nav>
       <router-link to="/">Home</router-link> 
       <router-link to="/about">About</router-link>
-      <h1>view.js</h1>
+      
       
     </nav>
+    <router-view/>
 </template>
 <script>
 
 export default {
-  components: {
-    AboutView
-  }
+
 }
 </script>
 <style>

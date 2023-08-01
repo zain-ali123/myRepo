@@ -1,27 +1,32 @@
 <template>
-    <v-footer class="bg-grey-lighten-1">
-        <v-row justify="center" no-gutters>
-            <v-btn v-for="link in links" :key="link" color="white" variant="text" class="mx-2" rounded="xl">
-                {{ link }}
-            </v-btn>
-            <v-col class="text-center mt-4" cols="12">
-                {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
-            </v-col>
-        </v-row>
-    </v-footer>
+    <h1>im in temp Parent and  message from leaf is =====>{{ leafNodeMessage }}</h1>
+    <firstChild/>
 </template>
 <script>
+import firstChild from '../components/temp2.vue'
+
 export default {
-    // name: 'temp',
-    data: () => ({
-        links: [
-            'Home',
-            'About Us',
-            'Team',
-            'Services',
-            'Blog',
-            'Contact Us',
-        ],
-    }),
+
+    
+    components: {
+            firstChild
+    },
+   
+    inject: ['leafMessage'],
+    data() {
+        return {
+        leafNodeMessage:this.leafMessage
+        }
+    },
+    provide() {
+        return {
+             message: 'Message from heirarchy top (hello)'
+        }
+   
+       
+    },
+    created() {
+        console.log(this.leafMessage)
+    }
 }
 </script>

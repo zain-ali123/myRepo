@@ -16,7 +16,7 @@
         <button type="submit" @click="Login">Login{{ getForm(form) }}</button>
     
     <router-link to="/register">
-      <button style="margin-left: 10px;">register</button> 
+      <v-btn class="ml-5">register</v-btn> 
     </router-link>
     
  
@@ -26,6 +26,7 @@
 
 <script>
 import router from '@/router';
+// import { mapGetters,mapActions } from 'vuex';
 export default {
   name: 'HelloWorld',
   props: {
@@ -45,6 +46,7 @@ export default {
   },
 
   computed: {
+    // ...mapGetters({user: 'getUser'})
 
   },
   methods: {
@@ -99,7 +101,7 @@ export default {
       }
     },
 
-    
+    // ...mapActions({createUser:'registerUser'})
   
 
 
